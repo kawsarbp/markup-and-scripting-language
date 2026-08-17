@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Create an account on DIU Bus Tracker to track your Dhaka International University shuttle in real-time.">
+    <title>DIU Bus Tracker - Register</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-page">
+
+<div class="bg-blobs">
+    <div class="blob animate-float" style="width: 24rem; height: 24rem; background: rgba(0, 104, 56, 0.1); top: -12rem; left: -12rem;"></div>
+    <div class="blob animate-float-slow" style="width: 20rem; height: 20rem; background: rgba(0, 166, 81, 0.1); top: 33%; right: -8rem; animation-delay: -3s;"></div>
+    <div class="blob animate-float" style="width: 16rem; height: 16rem; background: rgba(255, 140, 0, 0.1); bottom: -8rem; left: 25%; animation-delay: -6s;"></div>
+    <div class="blob animate-float-slow" style="width: 18rem; height: 18rem; background: rgba(0, 104, 56, 0.1); bottom: 25%; right: -5rem; animation-delay: -9s;"></div>
+</div>
+
+<nav class="navbar">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+            <div class="nav-logo-icon gradient-bg">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+            </div>
+            <span class="nav-logo-text">DIU <span class="gradient-text">Bus Tracker</span></span>
+        </a>
+
+        <a href="index.html" class="nav-home">
+            <svg viewBox="0 0 24 24">
+                <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+            </svg>
+            Home
+        </a>
+    </div>
+</nav>
+
+<div class="auth-area">
+    <div class="auth-card">
+        <div class="auth-header">
+            <div class="auth-logo gradient-bg">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+            </div>
+            <h2 class="auth-title">Create Account</h2>
+            <p class="auth-subtitle">Start tracking your DIU shuttle in real-time</p>
+        </div>
+
+        <div class="glass-card">
+            <form class="form" action="#" method="post">
+                <div class="field">
+                    <label for="name">Name</label>
+                    <div class="input-wrap">
+                        <div class="input-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                            </svg>
+                        </div>
+                        <input class="input input-with-icon" id="name" type="text" name="name" placeholder="Your full name" required autocomplete="name" autofocus>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="email">Email</label>
+                    <div class="input-wrap">
+                        <div class="input-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                        </div>
+                        <input class="input input-with-icon" id="email" type="email" name="email" placeholder="Enter your email" required autocomplete="username">
+                    </div>
+                </div>
+
+                <div class="field-row">
+                    <div class="field">
+                        <label for="reg_no">Registration No</label>
+                        <input class="input" id="reg_no" type="text" name="reg_no" placeholder="e.g. 123-45-6789" required>
+                    </div>
+                    <div class="field">
+                        <label for="roll_no">Roll No</label>
+                        <input class="input" id="roll_no" type="text" name="roll_no" placeholder="Optional">
+                    </div>
+                </div>
+
+                <div class="field-row">
+                    <div class="field">
+                        <label for="department">Department</label>
+                        <select class="select" id="department" name="department" required>
+                            <option value="" selected disabled>Select Department</option>
+                            <option value="CSE">CSE</option>
+                            <option value="EEE">EEE</option>
+                            <option value="CIVIL">CIVIL</option>
+                            <option value="LAW">LAW</option>
+                            <option value="ENGLISH">ENGLISH</option>
+                            <option value="MICROBIOLOGY">MICROBIOLOGY</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="batch">Batch</label>
+                        <input class="input" id="batch" type="text" name="batch" placeholder="e.g. 55th">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="password">Password</label>
+                    <div class="input-wrap">
+                        <div class="input-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                            </svg>
+                        </div>
+                        <input class="input input-with-icon input-with-eye" id="password" type="password" name="password" placeholder="Create a password" required autocomplete="new-password">
+                        <button type="button" class="eye-btn" onclick="togglePassword()" aria-label="Toggle password visibility">
+                            <svg id="eye-icon" viewBox="0 0 24 24">
+                                <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="password_confirmation">Confirm Password</label>
+                    <div class="input-wrap">
+                        <div class="input-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                            </svg>
+                        </div>
+                        <input class="input input-with-icon input-with-eye" id="password_confirmation" type="password" name="password_confirmation" placeholder="Confirm your password" required autocomplete="new-password">
+                        <button type="button" class="eye-btn" onclick="toggleConfirmPassword()" aria-label="Toggle password visibility">
+                            <svg id="eye-icon-confirm" viewBox="0 0 24 24">
+                                <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit">Create Account</button>
+            </form>
+
+            <p class="card-footer">
+                Already have an account?
+                <a class="link" href="login.html">Sign in</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
