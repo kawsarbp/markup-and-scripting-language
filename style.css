@@ -259,15 +259,18 @@ body {
     overflow: hidden;
 }
 
-/* Subtle green background overlay on the hero */
+/* DIU image covering the whole hero with a soft overlay for readability */
 .hero-bg-overlay {
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    opacity: 0.05;
-    background: linear-gradient(135deg, #004D28 0%, #006838 40%, #00A651 100%);
+    background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.97) 0%, rgba(255, 255, 255, 0.85) 45%, rgba(255, 255, 255, 0.55) 100%),
+        url('images/DIU.png');
+    background-size: cover;
+    background-position: center;
 }
 
 /* Decorative blurred blobs in the hero background */
@@ -481,6 +484,7 @@ body {
     fill: #006838;
 }
 
+/* Right column: DIU image as a soft background with the mockup card on top */
 /* Right column mockup (hidden until large screens) */
 .hero-right {
     display: none;
@@ -493,6 +497,8 @@ body {
 
 /* Mockup app card showing the bus tracker preview */
 .mockup-card {
+    position: relative;
+    z-index: 2;
     width: 20rem;
     height: 24rem;
     border-radius: 1.5rem;
@@ -500,7 +506,6 @@ body {
     align-items: center;
     justify-content: center;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    position: relative;
 }
 
 .mockup-inner {
