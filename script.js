@@ -73,6 +73,36 @@ document.addEventListener('DOMContentLoaded', function () {
     // Listen for every scroll, and also run once on page load
     window.addEventListener('scroll', onScroll);
     onScroll();
+
+    /* ----------------------------------------------------------
+       1.4 Hero mockup - animate the route direction
+       ----------------------------------------------------------
+       Every 3 seconds we swap the route text so the bus looks
+       like it travels both ways. A quick fade makes it smooth.
+    ---------------------------------------------------------- */
+    var routeEl = document.getElementById('mockup-route');
+
+    if (routeEl) {
+        var showFirstRoute = true; // which route is on screen now
+
+        setInterval(function () {
+            // 1. Fade the old route out
+            routeEl.classList.add('route-swap');
+
+            setTimeout(function () {
+                // 2. Put the other route in
+                if (showFirstRoute) {
+                    routeEl.textContent = 'Route: Notun Bazar \u2192 DIU campus';
+                } else {
+                    routeEl.textContent = 'Route: DIU campus \u2192 Notun Bazar';
+                }
+                showFirstRoute = !showFirstRoute; // flip for next time
+
+                // 3. Fade the new route back in
+                routeEl.classList.remove('route-swap');
+            }, 300);
+        }, 3000);
+    }
 });
 
 /* ==========================================================================
