@@ -150,6 +150,12 @@ body {
     color: #006838;
 }
 
+/* Active page link in the navbar */
+.nav-links a.active {
+    color: #006838;
+    font-weight: 600;
+}
+
 /* "Log in" link */
 .btn-login {
     color: #4B5563;
@@ -1726,4 +1732,129 @@ body.auth-page .nav-inner {
 
 .card-footer .link {
     font-weight: 600;
+}
+
+/* ==========================================================================
+   6. Bus Gallery Page (bus-gallery.html)
+   ========================================================================== */
+
+/* 6.1 Page hero
+   Title and subtitle shown below the fixed navbar */
+.gallery-hero {
+    padding: 8rem 0 3rem;
+    text-align: center;
+}
+
+.gallery-title {
+    font-size: 2.25rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 640px) {
+    .gallery-title { font-size: 2.5rem; }
+}
+
+.gallery-title .green {
+    color: #006838;
+}
+
+.gallery-subtitle {
+    color: #6B7280;
+    font-size: 1.125rem;
+    line-height: 1.625;
+    max-width: 42rem;
+    margin: 0 auto;
+}
+
+/* 6.2 Gallery grid
+   Responsive grid of bus cards */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+    .gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+}
+
+/* Individual bus card */
+.bus-card {
+    background: #FFFFFF;
+    border-radius: 1rem;
+    border: 1px solid #F3F4F6;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bus-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(0, 104, 56, 0.12);
+}
+
+/* Bus image (real photo) */
+.bus-image {
+    height: 12rem;
+    overflow: hidden;
+}
+
+.bus-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.bus-card:hover .bus-image img {
+    transform: scale(1.05);
+}
+
+/* Bus details */
+.bus-info {
+    padding: 1.5rem;
+}
+
+.bus-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.bus-name {
+    font-size: 1.125rem;
+    font-weight: 700;
+}
+
+/* Status pill (Active / On Trip) */
+.bus-status {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.625rem;
+    border-radius: 9999px;
+    background: rgba(0, 166, 81, 0.12);
+    color: #00A651;
+}
+
+.bus-status.orange {
+    background: rgba(255, 140, 0, 0.12);
+    color: #FF8C00;
+}
+
+.bus-route {
+    color: #4B5563;
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+}
+
+.bus-meta {
+    color: #9CA3AF;
+    font-size: 0.8125rem;
 }
