@@ -643,7 +643,98 @@ body {
     color: #4B5563;
 }
 
-/* 4.4 Features Section
+/* 4.4 How It Works Section
+   Simple and attractive step cards */
+.steps-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+    .steps-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+    .steps-grid { grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+}
+
+/* Individual step card */
+.step-card {
+    background: #FFFFFF;
+    border-radius: 1rem;
+    padding: 2rem 1.5rem;
+    border: 1px solid #F3F4F6;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.step-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(0, 104, 56, 0.12);
+}
+
+/* Small "Step 1" label pill */
+.step-num {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    background: rgba(0, 104, 56, 0.1);
+    color: #006838;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+}
+
+.step-card.alt .step-num {
+    background: rgba(255, 140, 0, 0.12);
+    color: #FF8C00;
+}
+
+/* Rounded icon tile */
+.step-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 0.875rem;
+    background: rgba(0, 104, 56, 0.1);
+    color: #006838;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+}
+
+/* Orange icon variant for alternating cards */
+.step-icon.orange {
+    background: rgba(255, 140, 0, 0.12);
+    color: #FF8C00;
+}
+
+.step-icon svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.step-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.step-text {
+    color: #6B7280;
+    font-size: 0.875rem;
+    line-height: 1.625;
+}
+
+/* 4.5 Features Section
    Responsive grid of feature cards */
 .features-grid {
     display: grid;
@@ -730,7 +821,7 @@ body {
     color: #006838;
 }
 
-/* 4.5 About Section
+/* 4.6 About Section
    "Powered by Laravel" - two-column layout with info + stats card */
 .about-grid {
     display: grid;
@@ -859,7 +950,7 @@ body {
     z-index: -1;
 }
 
-/* 4.6 Reviews Section
+/* 4.7 Reviews Section
    Student testimonials shown as a responsive card grid */
 .reviews-grid {
     display: grid;
@@ -947,7 +1038,7 @@ body {
     font-size: 0.8125rem;
 }
 
-/* 4.7 CTA Section
+/* 4.8 CTA Section
    Full-width gradient call-to-action band */
 .cta {
     position: relative;
@@ -1048,7 +1139,7 @@ body {
     background: rgba(255, 255, 255, 0.1);
 }
 
-/* 4.8 Footer
+/* 4.9 Footer
    Dark footer with brand, quick links, contact and social buttons */
 .footer {
     background: #111827;
