@@ -828,7 +828,7 @@ body {
 }
 
 /* 4.6 About Section
-   "Powered by Laravel" - two-column layout with info + stats card */
+   About DIU Bus Tracker - two-column layout with info + stats card */
 .about-grid {
     display: grid;
     grid-template-columns: 1fr;
