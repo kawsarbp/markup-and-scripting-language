@@ -2516,6 +2516,7 @@ body.auth-page .nav-inner {
     border-radius: 1rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
     padding: 1.5rem;
+    height: 30rem;
 }
 
 .dashboard-card.map-card {
