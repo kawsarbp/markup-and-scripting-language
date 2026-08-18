@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Driver Dashboard - Share your DIU Bus Tracker location in real-time with one button.">
+    <title>DIU Bus Tracker - Driver Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-page">
+
+<div class="dashboard-main">
+    <header class="dashboard-topbar">
+        <div class="topbar-brand">
+            <div class="topbar-brand-icon gradient-bg">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+            </div>
+            <h1 class="topbar-title">Driver Dashboard</h1>
+        </div>
+        <div class="topbar-actions">
+            <a href="login.html" class="topbar-back">
+                <svg viewBox="0 0 24 24"><path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+                Logout
+            </a>
+        </div>
+    </header>
+
+    <main class="dashboard-content">
+        <div class="dashboard-head">
+            <h1>Location Sharing</h1>
+            <p>Start sharing your bus location so students can track you live</p>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="dashboard-card">
+                <div class="card-head">
+                    <h3 class="card-title">Sharing Controls</h3>
+                    <span class="dashboard-status" id="driver-status">
+                        <span class="dashboard-status-dot" id="driver-status-dot"></span>
+                        <span id="driver-status-text">Sharing: OFF</span>
+                    </span>
+                </div>
+                <div class="card-body">
+                    <div class="driver-coords">
+                        <p>Latitude <span id="lat">--</span></p>
+                        <p>Longitude <span id="lng">--</span></p>
+                        <p>Route <span>DIU campus &rarr; Notun Bazar</span></p>
+                        <p>Bus <span>Bus 03 &middot; Green Line</span></p>
+                    </div>
+
+                    <div class="driver-actions">
+                        <button type="button" class="btn-driver btn-driver-show" onclick="startSharing()">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                            Show Location
+                        </button>
+                        <button type="button" class="btn-driver btn-driver-stop" onclick="stopSharing()">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="6" y="6" width="12" height="12" rx="2"/>
+                            </svg>
+                            Stop Location
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-card map-card">
+                <div class="card-head">
+                    <h3 class="card-title">Your Location</h3>
+                    <span class="dashboard-status" id="map-status">
+                        <span class="dashboard-status-dot"></span>
+                        <span id="map-status-text">Waiting</span>
+                    </span>
+                </div>
+                <div class="static-map">
+                    <iframe
+                        title="Driver location map"
+                        src="https://www.openstreetmap.org/export/embed.html?bbox=90.402500%2C23.805300%2C90.422500%2C23.815300&layer=mapnik&marker=23.810300%2C90.412500"
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script>
+    var sharingTimer = null;
+    var simLat = 23.8103;
+    var simLng = 90.4125;
+
+    function startSharing() {
+        var status = document.getElementById('driver-status');
+        var statusDot = document.getElementById('driver-status-dot');
+        var statusText = document.getElementById('driver-status-text');
+        var mapStatus = document.getElementById('map-status');
+
+        status.classList.add('on');
+        mapStatus.classList.add('on');
+        statusDot.classList.add('active');
+        mapStatus.querySelector('.dashboard-status-dot').classList.add('active');
+        statusText.textContent = 'Sharing: ON';
+        document.getElementById('map-status-text').textContent = 'Live';
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                simLat = position.coords.latitude;
+                simLng = position.coords.longitude;
+                updateCoords();
+            }, function () {
+                simulateMovement();
+            });
+        } else {
+            simulateMovement();
+        }
+
+        if (!sharingTimer) {
+            sharingTimer = setInterval(simulateMovement, 3000);
+        }
+    }
+
+    function stopSharing() {
+        document.getElementById('driver-status').classList.remove('on');
+        document.getElementById('map-status').classList.remove('on');
+        document.getElementById('driver-status-dot').classList.remove('active');
+        document.getElementById('map-status').querySelector('.dashboard-status-dot').classList.remove('active');
+        document.getElementById('driver-status-text').textContent = 'Sharing: OFF';
+        document.getElementById('map-status-text').textContent = 'Waiting';
+
+        if (sharingTimer) {
+            clearInterval(sharingTimer);
+            sharingTimer = null;
+        }
+    }
+
+    function simulateMovement() {
+        simLat += (Math.random() - 0.5) * 0.0008;
+        simLng += (Math.random() - 0.5) * 0.0008;
+        updateCoords();
+    }
+
+    function updateCoords() {
+        document.getElementById('lat').textContent = simLat.toFixed(6);
+        document.getElementById('lng').textContent = simLng.toFixed(6);
+    }
+</script>
+
+</body>
+</html>

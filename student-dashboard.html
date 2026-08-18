@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Student Dashboard - Track your DIU Bus Tracker shuttle in real-time on the live map.">
+    <title>DIU Bus Tracker - Student Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-page">
+
+<div class="dashboard-main">
+    <header class="dashboard-topbar">
+        <div class="topbar-brand">
+            <div class="topbar-brand-icon gradient-bg">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+            </div>
+            <h1 class="topbar-title">Student Dashboard</h1>
+        </div>
+        <div class="topbar-actions">
+            <a href="login.html" class="topbar-back">
+                <svg viewBox="0 0 24 24"><path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+                Logout
+            </a>
+        </div>
+    </header>
+
+    <main class="dashboard-content">
+        <div class="dashboard-head">
+            <h1>Track Your Bus</h1>
+            <p>Watch your DIU shuttle move in real-time</p>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="dashboard-card map-card map-tall">
+                <div class="card-head">
+                    <h3 class="card-title">Live Bus Location</h3>
+                    <span class="dashboard-status on">
+                        <span class="dashboard-status-dot active"></span>
+                        Bus 03 is moving
+                    </span>
+                </div>
+                <div class="static-map">
+                    <iframe
+                        title="Bus location map"
+                        src="https://www.openstreetmap.org/export/embed.html?bbox=90.402500%2C23.805300%2C90.422500%2C23.815300&layer=mapnik&marker=23.810300%2C90.412500"
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+
+            <div class="dashboard-card">
+                <div class="card-head">
+                    <h3 class="card-title">Trip Details</h3>
+                </div>
+                <div class="card-body">
+                    <div class="info-list">
+                        <div class="info-list-row">
+                            <span>Route</span>
+                            <span>DIU campus &rarr; Notun Bazar</span>
+                        </div>
+                        <div class="info-list-row">
+                            <span>Bus</span>
+                            <span>Bus 03 &middot; Green Line</span>
+                        </div>
+                        <div class="info-list-row">
+                            <span>Estimated Arrival</span>
+                            <span class="green">15:00</span>
+                        </div>
+                        <div class="info-list-row">
+                            <span>On Time</span>
+                            <span class="green">98%</span>
+                        </div>
+                        <div class="info-list-row">
+                            <span>Next Stop</span>
+                            <span>Notun Bazar</span>
+                        </div>
+                        <div class="info-list-row">
+                            <span>Stops Remaining</span>
+                            <span>4</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+</body>
+</html>

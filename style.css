@@ -1861,6 +1861,321 @@ body.auth-page .nav-inner {
 }
 
 /* ==========================================================================
+   5.9 Driver Dashboard (driver-dashboard.html)
+   Location sharing toggle with status pill and coordinate readout
+   ========================================================================== */
+
+/* Status pill showing whether location sharing is ON or OFF */
+.driver-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 0.875rem;
+    border-radius: 9999px;
+    background: rgba(255, 140, 0, 0.12);
+    color: #FF8C00;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.driver-status-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 9999px;
+    background: currentColor;
+}
+
+.driver-status-dot.active {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.driver-status.on {
+    background: rgba(0, 166, 81, 0.12);
+    color: #00A651;
+}
+
+/* Live coordinate readout */
+.driver-coords {
+    display: grid;
+    gap: 0.375rem;
+    padding: 1rem 1.25rem;
+    background: rgba(243, 244, 246, 0.6);
+    border: 1px solid #F3F4F6;
+    border-radius: 0.75rem;
+    font-size: 0.875rem;
+    color: #4B5563;
+    margin-bottom: 1.25rem;
+}
+
+.driver-coords p {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.driver-coords p span {
+    font-weight: 600;
+    color: #111827;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Show Location / Stop Location buttons */
+.driver-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.btn-driver {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.625rem 1rem;
+    border: none;
+    border-radius: 0.75rem;
+    font-family: inherit;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-driver svg {
+    width: 1rem;
+    height: 1rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.btn-driver-show {
+    background: linear-gradient(135deg, #006838 0%, #00A651 50%, #006838 100%);
+    background-size: 200% auto;
+}
+
+.btn-driver-show:hover {
+    background-position: right center;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 104, 56, 0.3);
+}
+
+.btn-driver-stop {
+    background: linear-gradient(135deg, #D9534F 0%, #FF8C00 100%);
+}
+
+.btn-driver-stop:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(255, 140, 0, 0.35);
+}
+
+.btn-driver:active {
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   5.10 Student Dashboard (student-dashboard.html)
+   Static map with live bus status and trip information
+   ========================================================================== */
+
+.student-card {
+    max-width: 30rem;
+}
+
+/* Status pill showing whether the bus is moving or waiting */
+.student-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 0.875rem;
+    border-radius: 9999px;
+    background: rgba(255, 140, 0, 0.12);
+    color: #FF8C00;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.student-status.on {
+    background: rgba(0, 166, 81, 0.12);
+    color: #00A651;
+}
+
+.student-status-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 9999px;
+    background: currentColor;
+}
+
+.student-status-dot.active {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Static map embed (OpenStreetMap, no API key needed) */
+.static-map {
+    width: 100%;
+    height: 14rem;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    border: 1px solid #E5E7EB;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    margin-bottom: 1.25rem;
+}
+
+.static-map iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+/* Trip detail rows under the map */
+.student-info {
+    display: grid;
+    gap: 0.375rem;
+    padding: 1rem 1.25rem;
+    background: rgba(243, 244, 246, 0.6);
+    border: 1px solid #F3F4F6;
+    border-radius: 0.75rem;
+}
+
+.student-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.875rem;
+    color: #6B7280;
+}
+
+.student-info-row > span:last-child {
+    font-weight: 600;
+    color: #111827;
+}
+
+.student-info-row .eta {
+    color: #006838;
+}
+
+.student-info-row .green {
+    color: #006838;
+}
+
+/* ==========================================================================
+   5.11 Admin Dashboard (admin-dashboard.html)
+   Stat boxes row, fleet status pill and live map
+   ========================================================================== */
+
+.admin-card {
+    max-width: 30rem;
+}
+
+/* First row: three count boxes (Vehicles / Students / Routes) */
+.admin-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.admin-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 0.5rem;
+    background: rgba(243, 244, 246, 0.6);
+    border: 1px solid #F3F4F6;
+    border-radius: 0.75rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.admin-stat:hover {
+    transform: translateY(-3px);
+    border-color: #006838;
+    box-shadow: 0 12px 24px -10px rgba(0, 104, 56, 0.25);
+}
+
+.admin-stat-icon {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 0.625rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+}
+
+.admin-stat-icon.green { background: #006838; }
+.admin-stat-icon.orange { background: #FF8C00; }
+.admin-stat-icon.dark { background: #111827; }
+
+.admin-stat-icon svg {
+    width: 1.125rem;
+    height: 1.125rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.admin-stat-text {
+    text-align: center;
+}
+
+.admin-stat-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+.admin-stat-label {
+    font-size: 0.75rem;
+    color: #6B7280;
+}
+
+/* Fleet status pill */
+.admin-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 0.875rem;
+    border-radius: 9999px;
+    background: rgba(255, 140, 0, 0.12);
+    color: #FF8C00;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.admin-status.on {
+    background: rgba(0, 166, 81, 0.12);
+    color: #00A651;
+}
+
+.admin-status-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 9999px;
+    background: currentColor;
+}
+
+.admin-status-dot.active {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ==========================================================================
    6. Bus Gallery Page (bus-gallery.html)
    ========================================================================== */
 
@@ -1983,4 +2298,410 @@ body.auth-page .nav-inner {
 .bus-meta {
     color: #9CA3AF;
     font-size: 0.8125rem;
+}
+/* ==========================================================================
+   7. Dashboard Layout (admin / driver / student dashboard pages)
+   Full-width design with a topbar and a wide content area
+   ========================================================================== */
+
+.dashboard-page {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    color: #111827;
+    background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 30%, #fefce8 70%, #fef9c3 100%);
+    display: flex;
+}
+
+/* 7.2 Main area (topbar + content) */
+.dashboard-main {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-topbar {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    background: rgba(255, 255, 255, 0.8);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(229, 231, 235, 0.8);
+}
+
+.topbar-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+.topbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.topbar-brand-icon {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 0.625rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px -2px rgba(0, 104, 56, 0.3);
+}
+
+.topbar-brand-icon svg {
+    width: 1.125rem;
+    height: 1.125rem;
+    fill: #FFFFFF;
+}
+
+.topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.topbar-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.5rem 0.875rem;
+    border-radius: 0.625rem;
+    border: 1px solid #E5E7EB;
+    background: #FFFFFF;
+    color: #4B5563;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.topbar-back:hover {
+    border-color: #006838;
+    color: #006838;
+    transform: translateY(-1px);
+}
+
+.topbar-back svg {
+    width: 1rem;
+    height: 1rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.dashboard-content {
+    flex: 1;
+    padding: 2rem;
+}
+
+.dashboard-head {
+    margin-bottom: 1.5rem;
+}
+
+.dashboard-head h1 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #111827;
+}
+
+.dashboard-head p {
+    color: #6B7280;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+/* 7.3 Stat cards row (admin) */
+.stat-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .stat-cards { grid-template-columns: repeat(3, 1fr); }
+}
+
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: #FFFFFF;
+    border: 1px solid #F3F4F6;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    border-color: #006838;
+    box-shadow: 0 16px 32px -12px rgba(0, 104, 56, 0.25);
+}
+
+.stat-card-icon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    flex-shrink: 0;
+}
+
+.stat-card-icon.green { background: linear-gradient(135deg, #006838, #00A651); }
+.stat-card-icon.orange { background: linear-gradient(135deg, #FF8C00, #FFA533); }
+.stat-card-icon.dark { background: #111827; }
+
+.stat-card-icon svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.stat-card-value {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #111827;
+    line-height: 1.1;
+}
+
+.stat-card-label {
+    font-size: 0.8125rem;
+    color: #6B7280;
+}
+
+.stat-card-change {
+    margin-left: auto;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #00A651;
+    background: rgba(0, 166, 81, 0.1);
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+}
+
+/* 7.4 Content grid (map + side panel) */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+    .dashboard-grid { grid-template-columns: 2fr 1fr; }
+}
+
+.dashboard-card {
+    background: #FFFFFF;
+    border: 1px solid #F3F4F6;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    padding: 1.5rem;
+}
+
+.dashboard-card.map-card {
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid #F3F4F6;
+}
+
+.card-title {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.map-card .static-map {
+    flex: 1;
+    height: 24rem;
+    margin-bottom: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* Taller map for the student and admin dashboards */
+.map-card.map-tall .static-map {
+    height: 34rem;
+}
+
+/* Status pill inside a card */
+.dashboard-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 0.875rem;
+    border-radius: 9999px;
+    background: rgba(255, 140, 0, 0.12);
+    color: #FF8C00;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.dashboard-status.on {
+    background: rgba(0, 166, 81, 0.12);
+    color: #00A651;
+}
+
+.dashboard-status-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 9999px;
+    background: currentColor;
+}
+
+.dashboard-status-dot.active {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Driver location controls */
+.driver-coords {
+    display: grid;
+    gap: 0.375rem;
+    padding: 1rem 1.25rem;
+    background: rgba(243, 244, 246, 0.6);
+    border: 1px solid #F3F4F6;
+    border-radius: 0.75rem;
+    font-size: 0.875rem;
+    color: #4B5563;
+    margin-bottom: 1.25rem;
+}
+
+.driver-coords p {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.driver-coords p span {
+    font-weight: 600;
+    color: #111827;
+    font-variant-numeric: tabular-nums;
+}
+
+.driver-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.btn-driver {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 0.75rem;
+    font-family: inherit;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-driver svg {
+    width: 1rem;
+    height: 1rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.btn-driver-show {
+    background: linear-gradient(135deg, #006838 0%, #00A651 50%, #006838 100%);
+    background-size: 200% auto;
+}
+
+.btn-driver-show:hover {
+    background-position: right center;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 104, 56, 0.3);
+}
+
+.btn-driver-stop {
+    background: linear-gradient(135deg, #D9534F 0%, #FF8C00 100%);
+}
+
+.btn-driver-stop:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(255, 140, 0, 0.35);
+}
+
+.btn-driver:active {
+    transform: translateY(0);
+}
+
+/* Trip / fleet info list */
+.info-list {
+    display: grid;
+    gap: 0.375rem;
+}
+
+.info-list-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.875rem;
+    color: #6B7280;
+}
+
+.info-list-row > span:last-child {
+    font-weight: 600;
+    color: #111827;
+}
+
+.info-list-row .green {
+    color: #006838;
+}
+
+/* 7.5 Responsive padding for small screens */
+@media (max-width: 767px) {
+    .dashboard-topbar {
+        padding: 0.75rem 1rem;
+    }
+
+    .dashboard-content {
+        padding: 1.25rem 1rem;
+    }
 }
