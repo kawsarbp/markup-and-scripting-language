@@ -1,31 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Basic page info -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Explore the DIU Bus Tracker fleet - view our buses, routes and schedules at a glance.">
     <title>DIU Bus Tracker - Bus Gallery</title>
 
+    <!-- Google font (Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+    <!-- Our stylesheet -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<!-- ======================= NAVBAR (top menu) ======================= -->
 <nav class="navbar" id="navbar">
     <div class="container">
         <div class="nav-inner">
             <div class="nav-left">
+                <!-- Logo icon -->
                 <div class="logo-box gradient-bg">
                     <svg viewBox="0 0 24 24">
                         <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                     </svg>
                 </div>
+                <!-- Site name / brand -->
                 <a href="index.html" class="brand">DIU <span>Bus Tracker</span></a>
             </div>
 
+            <!-- Desktop menu links (hidden on mobile) -->
             <div class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="index.html#features">Features</a>
@@ -37,6 +44,7 @@
                 <a href="register.html" class="btn-get-started">Get Started</a>
             </div>
 
+            <!-- Hamburger button - opens/closes the mobile menu -->
             <button class="menu-btn" id="menu-btn" aria-label="Toggle navigation menu">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
@@ -44,6 +52,7 @@
             </button>
         </div>
 
+        <!-- Mobile dropdown menu (shown only on small screens) -->
         <div class="mobile-menu" id="mobile-menu">
             <a href="index.html" data-menu-link>Home</a>
             <a href="index.html#features" data-menu-link>Features</a>
@@ -57,6 +66,8 @@
     </div>
 </nav>
 
+<!-- ======================= GALLERY HERO ======================= -->
+<!-- Page title shown below the navbar -->
 <section class="gallery-hero">
     <div class="container">
         <div class="badge">
@@ -68,9 +79,12 @@
     </div>
 </section>
 
+<!-- ======================= BUS CARDS GRID ======================= -->
 <section class="section section-gray">
     <div class="container">
+        <!-- Grid holding the bus cards -->
         <div class="gallery-grid">
+            <!-- Bus card 1 -->
             <div class="bus-card">
                 <div class="bus-image"><img src="images/bus-1.jpg" alt="DIU Bus photo" loading="lazy"></div>
                 <div class="bus-info">
@@ -83,6 +97,7 @@
                 </div>
             </div>
 
+            <!-- Bus card 2 -->
             <div class="bus-card">
                 <div class="bus-image"><img src="images/bus-2.jpg" alt="DIU Bus photo" loading="lazy"></div>
                 <div class="bus-info">
@@ -95,6 +110,7 @@
                 </div>
             </div>
 
+            <!-- Bus card 3 -->
             <div class="bus-card">
                 <div class="bus-image"><img src="images/bus-uni.jpg" alt="DIU University Shuttle Bus photo" loading="lazy"></div>
                 <div class="bus-info">
@@ -107,6 +123,7 @@
                 </div>
             </div>
 
+            <!-- Bus card 4 -->
             <div class="bus-card">
                 <div class="bus-image"><img src="images/bus-4.jpg" alt="DIU Bus photo" loading="lazy"></div>
                 <div class="bus-info">
@@ -119,6 +136,7 @@
                 </div>
             </div>
 
+            <!-- Bus card 5 -->
             <div class="bus-card">
                 <div class="bus-image"><img src="images/bus-5.jpg" alt="DIU Bus photo" loading="lazy"></div>
                 <div class="bus-info">
@@ -131,6 +149,7 @@
                 </div>
             </div>
 
+            <!-- Bus card 6 -->
             <div class="bus-card">
                 <div class="bus-image"><img src="images/bus-6.jpg" alt="DIU Bus photo" loading="lazy"></div>
                 <div class="bus-info">
@@ -146,9 +165,12 @@
     </div>
 </section>
 
+<!-- ======================= FOOTER ======================= -->
 <footer id="contact" class="footer">
     <div class="container footer-top">
+        <!-- 4-column footer layout -->
         <div class="footer-grid">
+            <!-- Column 1: brand + description -->
             <div>
                 <div class="footer-brand">
                     <div class="logo-box gradient-bg">
@@ -162,6 +184,7 @@
                 <p class="footer-copy">&copy; <span id="year"></span> DIU Bus Tracker. All rights reserved.</p>
             </div>
 
+            <!-- Column 2: quick links -->
             <div class="footer-col">
                 <h4>Quick Links</h4>
                 <ul>
@@ -172,6 +195,7 @@
                 </ul>
             </div>
 
+            <!-- Column 3: contact info -->
             <div class="footer-col">
                 <h4>Contact</h4>
                 <ul class="footer-contact">
@@ -196,6 +220,7 @@
                 </ul>
             </div>
 
+            <!-- Column 4: developer info + social buttons -->
             <div class="footer-col">
                 <h4>Developer</h4>
                 <ul>
@@ -216,12 +241,14 @@
             </div>
         </div>
 
+        <!-- Bottom copyright strip -->
         <div class="footer-bottom">
             <p>Dhaka International University &mdash; Satarkul, Badda, Dhaka-1212, Bangladesh</p>
         </div>
     </div>
 </footer>
 
+<!-- Our JavaScript file (mobile menu + footer year) -->
 <script src="script.js"></script>
 
 </body>

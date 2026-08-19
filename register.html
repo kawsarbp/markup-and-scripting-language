@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Basic page info -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Create an account on DIU Bus Tracker to track your Dhaka International University shuttle in real-time.">
     <title>DIU Bus Tracker - Register</title>
 
+    <!-- Google font (Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+    <!-- Our stylesheet (auth page styles are under body.auth-page) -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="auth-page">
 
+<!-- Decorative blurred circles in the background -->
 <div class="bg-blobs">
     <div class="blob animate-float" style="width: 24rem; height: 24rem; background: rgba(0, 104, 56, 0.1); top: -12rem; left: -12rem;"></div>
     <div class="blob animate-float-slow" style="width: 20rem; height: 20rem; background: rgba(0, 166, 81, 0.1); top: 33%; right: -8rem; animation-delay: -3s;"></div>
@@ -21,8 +25,10 @@
     <div class="blob animate-float-slow" style="width: 18rem; height: 18rem; background: rgba(0, 104, 56, 0.1); bottom: 25%; right: -5rem; animation-delay: -9s;"></div>
 </div>
 
+<!-- ======================= NAVBAR (auth pages) ======================= -->
 <nav class="navbar">
     <div class="nav-inner">
+        <!-- Logo that links back to the home page -->
         <a href="index.html" class="nav-logo">
             <div class="nav-logo-icon gradient-bg">
                 <svg viewBox="0 0 24 24">
@@ -32,6 +38,7 @@
             <span class="nav-logo-text">DIU <span class="gradient-text">Bus Tracker</span></span>
         </a>
 
+        <!-- Home button -->
         <a href="index.html" class="nav-home">
             <svg viewBox="0 0 24 24">
                 <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
@@ -41,8 +48,10 @@
     </div>
 </nav>
 
+<!-- ======================= REGISTER FORM AREA ======================= -->
 <div class="auth-area">
     <div class="auth-card">
+        <!-- Card header: logo, title, subtitle -->
         <div class="auth-header">
             <div class="auth-logo gradient-bg">
                 <svg viewBox="0 0 24 24">
@@ -53,8 +62,10 @@
             <p class="auth-subtitle">Start tracking your DIU shuttle in real-time</p>
         </div>
 
+        <!-- Frosted glass panel holding the form -->
         <div class="glass-card">
             <form class="form" action="#" method="post">
+                <!-- Full name field -->
                 <div class="field">
                     <label for="name">Name</label>
                     <div class="input-wrap">
@@ -67,6 +78,7 @@
                     </div>
                 </div>
 
+                <!-- Email field -->
                 <div class="field">
                     <label for="email">Email</label>
                     <div class="input-wrap">
@@ -79,6 +91,7 @@
                     </div>
                 </div>
 
+                <!-- Two side-by-side fields: registration no + roll no -->
                 <div class="field-row">
                     <div class="field">
                         <label for="reg_no">Registration No</label>
@@ -90,6 +103,7 @@
                     </div>
                 </div>
 
+                <!-- Two side-by-side fields: department dropdown + batch -->
                 <div class="field-row">
                     <div class="field">
                         <label for="department">Department</label>
@@ -109,6 +123,7 @@
                     </div>
                 </div>
 
+                <!-- Password field with show/hide eye button -->
                 <div class="field">
                     <label for="password">Password</label>
                     <div class="input-wrap">
@@ -127,6 +142,7 @@
                     </div>
                 </div>
 
+                <!-- Confirm password field with its own eye button -->
                 <div class="field">
                     <label for="password_confirmation">Confirm Password</label>
                     <div class="input-wrap">
@@ -145,9 +161,11 @@
                     </div>
                 </div>
 
+                <!-- Submit button -->
                 <button type="submit" class="btn-submit">Create Account</button>
             </form>
 
+            <!-- Link to the login page -->
             <p class="card-footer">
                 Already have an account?
                 <a class="link" href="login.html">Sign in</a>
@@ -156,6 +174,7 @@
     </div>
 </div>
 
+<!-- Our JavaScript file (for the password show/hide) -->
 <script src="script.js"></script>
 
 </body>

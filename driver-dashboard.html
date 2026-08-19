@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Basic page info -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Driver Dashboard - Share your DIU Bus Tracker location in real-time with one button.">
     <title>DIU Bus Tracker - Driver Dashboard</title>
 
+    <!-- Google font (Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+    <!-- Our stylesheet (dashboard styles are under body.dashboard-page) -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="dashboard-page">
 
+<!-- ======================= DASHBOARD LAYOUT ======================= -->
 <div class="dashboard-main">
+    <!-- Top bar: title + logout -->
     <header class="dashboard-topbar">
         <div class="topbar-brand">
+            <!-- Small logo icon -->
             <div class="topbar-brand-icon gradient-bg">
                 <svg viewBox="0 0 24 24">
                     <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
@@ -24,6 +30,7 @@
             </div>
             <h1 class="topbar-title">Driver Dashboard</h1>
         </div>
+        <!-- Logout button -->
         <div class="topbar-actions">
             <a href="login.html" class="topbar-back">
                 <svg viewBox="0 0 24 24"><path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
@@ -32,22 +39,28 @@
         </div>
     </header>
 
+    <!-- ======================= MAIN CONTENT ======================= -->
     <main class="dashboard-content">
+        <!-- Page heading -->
         <div class="dashboard-head">
             <h1>Location Sharing</h1>
             <p>Start sharing your bus location so students can track you live</p>
         </div>
 
+        <!-- Two-column grid: controls + map -->
         <div class="dashboard-grid">
+            <!-- Sharing controls card -->
             <div class="dashboard-card">
                 <div class="card-head">
                     <h3 class="card-title">Sharing Controls</h3>
+                    <!-- Status pill (changes to ON when sharing) -->
                     <span class="dashboard-status" id="driver-status">
                         <span class="dashboard-status-dot" id="driver-status-dot"></span>
                         <span id="driver-status-text">Sharing: OFF</span>
                     </span>
                 </div>
                 <div class="card-body">
+                    <!-- Current coordinates readout -->
                     <div class="driver-coords">
                         <p>Latitude <span id="lat">--</span></p>
                         <p>Longitude <span id="lng">--</span></p>
@@ -55,6 +68,7 @@
                         <p>Bus <span>Bus 03 &middot; Green Line</span></p>
                     </div>
 
+                    <!-- Start / Stop buttons -->
                     <div class="driver-actions">
                         <button type="button" class="btn-driver btn-driver-show" onclick="startSharing()">
                             <svg viewBox="0 0 24 24">
@@ -72,6 +86,7 @@
                 </div>
             </div>
 
+            <!-- Map card showing the current location -->
             <div class="dashboard-card map-card">
                 <div class="card-head">
                     <h3 class="card-title">Your Location</h3>
@@ -81,6 +96,7 @@
                     </span>
                 </div>
                 <div class="static-map">
+                    <!-- OpenStreetMap embed (free, no API key) -->
                     <iframe
                         title="Driver location map"
                         src="https://www.openstreetmap.org/export/embed.html?bbox=90.402500%2C23.805300%2C90.422500%2C23.815300&layer=mapnik&marker=23.810300%2C90.412500"
@@ -92,17 +108,24 @@
     </main>
 </div>
 
+<!-- ======================= SHARING SCRIPT ======================= -->
 <script>
+    // Sharing timer id (null = not sharing right now)
     var sharingTimer = null;
+
+    // Starting position (near DIU campus). If the browser GPS
+    // is unavailable we keep moving this fake location.
     var simLat = 23.8103;
     var simLng = 90.4125;
 
+    // Turn ON location sharing
     function startSharing() {
         var status = document.getElementById('driver-status');
         var statusDot = document.getElementById('driver-status-dot');
         var statusText = document.getElementById('driver-status-text');
         var mapStatus = document.getElementById('map-status');
 
+        // Show the "ON" style on the pills
         status.classList.add('on');
         mapStatus.classList.add('on');
         statusDot.classList.add('active');
@@ -110,23 +133,26 @@
         statusText.textContent = 'Sharing: ON';
         document.getElementById('map-status-text').textContent = 'Live';
 
+        // Try to get the real GPS position from the browser
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function (position) {
                 simLat = position.coords.latitude;
                 simLng = position.coords.longitude;
                 updateCoords();
             }, function () {
-                simulateMovement();
+                simulateMovement(); // GPS blocked -> use fake movement
             });
         } else {
-            simulateMovement();
+            simulateMovement(); // Browser has no GPS -> fake movement
         }
 
+        // Move the marker every 3 seconds while sharing
         if (!sharingTimer) {
             sharingTimer = setInterval(simulateMovement, 3000);
         }
     }
 
+    // Turn OFF location sharing
     function stopSharing() {
         document.getElementById('driver-status').classList.remove('on');
         document.getElementById('map-status').classList.remove('on');
@@ -135,18 +161,21 @@
         document.getElementById('driver-status-text').textContent = 'Sharing: OFF';
         document.getElementById('map-status-text').textContent = 'Waiting';
 
+        // Stop the timer so the marker stops moving
         if (sharingTimer) {
             clearInterval(sharingTimer);
             sharingTimer = null;
         }
     }
 
+    // Small random step so the marker "moves" on the map
     function simulateMovement() {
         simLat += (Math.random() - 0.5) * 0.0008;
         simLng += (Math.random() - 0.5) * 0.0008;
         updateCoords();
     }
 
+    // Show the current coordinates on the page
     function updateCoords() {
         document.getElementById('lat').textContent = simLat.toFixed(6);
         document.getElementById('lng').textContent = simLng.toFixed(6);

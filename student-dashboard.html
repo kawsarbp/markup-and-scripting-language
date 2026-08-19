@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Basic page info -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Student Dashboard - Track your DIU Bus Tracker shuttle in real-time on the live map.">
     <title>DIU Bus Tracker - Student Dashboard</title>
 
+    <!-- Google font (Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+    <!-- Our stylesheet (dashboard styles are under body.dashboard-page) -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="dashboard-page">
 
+<!-- ======================= DASHBOARD LAYOUT ======================= -->
 <div class="dashboard-main">
+    <!-- Top bar: title + logout -->
     <header class="dashboard-topbar">
         <div class="topbar-brand">
+            <!-- Small logo icon -->
             <div class="topbar-brand-icon gradient-bg">
                 <svg viewBox="0 0 24 24">
                     <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
@@ -24,6 +30,7 @@
             </div>
             <h1 class="topbar-title">Student Dashboard</h1>
         </div>
+        <!-- Logout button -->
         <div class="topbar-actions">
             <a href="login.html" class="topbar-back">
                 <svg viewBox="0 0 24 24"><path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
@@ -32,13 +39,17 @@
         </div>
     </header>
 
+    <!-- ======================= MAIN CONTENT ======================= -->
     <main class="dashboard-content">
+        <!-- Page heading -->
         <div class="dashboard-head">
             <h1>Track Your Bus</h1>
             <p>Watch your DIU shuttle move in real-time</p>
         </div>
 
+        <!-- Two-column grid: live map + trip details -->
         <div class="dashboard-grid">
+            <!-- Live bus map card -->
             <div class="dashboard-card map-card map-tall">
                 <div class="card-head">
                     <h3 class="card-title">Live Bus Location</h3>
@@ -48,6 +59,7 @@
                     </span>
                 </div>
                 <div class="static-map">
+                    <!-- OpenStreetMap embed (free, no API key) -->
                     <iframe
                         title="Bus location map"
                         src="https://www.openstreetmap.org/export/embed.html?bbox=90.402500%2C23.805300%2C90.422500%2C23.815300&layer=mapnik&marker=23.810300%2C90.412500"
@@ -56,6 +68,7 @@
                 </div>
             </div>
 
+            <!-- Trip details card -->
             <div class="dashboard-card">
                 <div class="card-head">
                     <h3 class="card-title">Trip Details</h3>
